@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 7.6.7.2 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="00:00:00"/>
+	<style type="text/css">
+		@page { size: 8.5in 11in; margin: 0.79in }
+		p { line-height: 115%; margin-bottom: 0.1in; background: transparent }
+		pre { background: transparent }
+		pre.western { font-family: "Liberation Mono", monospace; font-size: 10pt }
+		pre.cjk { font-family: "Noto Sans Mono CJK SC", monospace; font-size: 10pt }
+		pre.ctl { font-family: "Liberation Mono", monospace; font-size: 10pt }
+	</style>
+</head>
+<body lang="en-US" link="#000080" vlink="#800000" dir="ltr"><pre class="western">import React, { useState, useEffect } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from &quot;@/components/ui/card&quot;;
+import { Bell, Brain, DollarSign, Heart, Clock, Users, AlertTriangle } from 'lucide-react';
+
+export default function DigitalExploitation() {
+  const [notifications, setNotifications] = useState(0);
+  const [mentalHealth, setMentalHealth] = useState(100);
+  const [profit, setProfit] = useState(0);
+  const [timeSpent, setTimeSpent] = useState(0);
+
+  useEffect(() =&gt; {
+    const timer = setInterval(() =&gt; {
+      setNotifications(prev =&gt; prev + 1);
+      setMentalHealth(prev =&gt; Math.max(0, prev - 0.5));
+      setProfit(prev =&gt; prev + 2);
+      setTimeSpent(prev =&gt; prev + 1);
+    }, 1000);
+
+    return () =&gt; clearInterval(timer);
+  }, []);
+
+  return (
+    &lt;div className=&quot;p-4 max-w-4xl mx-auto space-y-6&quot;&gt;
+      &lt;Card className=&quot;bg-white shadow-lg&quot;&gt;
+        &lt;CardHeader&gt;
+          &lt;CardTitle className=&quot;text-2xl text-center text-red-600 flex items-center justify-center gap-2&quot;&gt;
+            &lt;AlertTriangle className=&quot;w-8 h-8&quot; /&gt;
+            Digital Exploitation Reality Check
+          &lt;/CardTitle&gt;
+        &lt;/CardHeader&gt;
+        &lt;CardContent&gt;
+          &lt;div className=&quot;grid grid-cols-1 md:grid-cols-2 gap-4&quot;&gt;
+            {/* Notifications Counter */}
+            &lt;Card className=&quot;p-4 bg-blue-50&quot;&gt;
+              &lt;div className=&quot;flex items-center justify-between&quot;&gt;
+                &lt;div className=&quot;flex items-center gap-2&quot;&gt;
+                  &lt;Bell className=&quot;w-6 h-6 text-blue-600&quot; /&gt;
+                  &lt;h3 className=&quot;font-semibold&quot;&gt;Triggers Sent&lt;/h3&gt;
+                &lt;/div&gt;
+                &lt;span className=&quot;text-xl font-bold text-blue-600&quot;&gt;{notifications}&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;p className=&quot;mt-2 text-sm text-gray-600&quot;&gt;
+                Every second, platforms send new triggers to recapture your attention
+              &lt;/p&gt;
+            &lt;/Card&gt;
+
+            {/* Mental Health Impact */}
+            &lt;Card className=&quot;p-4 bg-red-50&quot;&gt;
+              &lt;div className=&quot;flex items-center justify-between&quot;&gt;
+                &lt;div className=&quot;flex items-center gap-2&quot;&gt;
+                  &lt;Brain className=&quot;w-6 h-6 text-red-600&quot; /&gt;
+                  &lt;h3 className=&quot;font-semibold&quot;&gt;Mental Wellbeing&lt;/h3&gt;
+                &lt;/div&gt;
+                &lt;span className=&quot;text-xl font-bold text-red-600&quot;&gt;{mentalHealth.toFixed(1)}%&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;div className=&quot;mt-2 w-full bg-gray-200 rounded-full h-2.5&quot;&gt;
+                &lt;div 
+                  className=&quot;bg-red-600 h-2.5 rounded-full transition-all duration-500&quot;
+                  style={{ width: `${mentalHealth}%` }}
+                &gt;&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/Card&gt;
+
+            {/* Corporate Profit */}
+            &lt;Card className=&quot;p-4 bg-green-50&quot;&gt;
+              &lt;div className=&quot;flex items-center justify-between&quot;&gt;
+                &lt;div className=&quot;flex items-center gap-2&quot;&gt;
+                  &lt;DollarSign className=&quot;w-6 h-6 text-green-600&quot; /&gt;
+                  &lt;h3 className=&quot;font-semibold&quot;&gt;Corporate Profit&lt;/h3&gt;
+                &lt;/div&gt;
+                &lt;span className=&quot;text-xl font-bold text-green-600&quot;&gt;${profit}&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;p className=&quot;mt-2 text-sm text-gray-600&quot;&gt;
+                Companies profit from every moment of engagement
+              &lt;/p&gt;
+            &lt;/Card&gt;
+
+            {/* Time Spent */}
+            &lt;Card className=&quot;p-4 bg-purple-50&quot;&gt;
+              &lt;div className=&quot;flex items-center justify-between&quot;&gt;
+                &lt;div className=&quot;flex items-center gap-2&quot;&gt;
+                  &lt;Clock className=&quot;w-6 h-6 text-purple-600&quot; /&gt;
+                  &lt;h3 className=&quot;font-semibold&quot;&gt;Time Lost&lt;/h3&gt;
+                &lt;/div&gt;
+                &lt;span className=&quot;text-xl font-bold text-purple-600&quot;&gt;{timeSpent}s&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;p className=&quot;mt-2 text-sm text-gray-600&quot;&gt;
+                Every second spent is engineered for addiction
+              &lt;/p&gt;
+            &lt;/Card&gt;
+          &lt;/div&gt;
+
+          {/* Key Messages */}
+          &lt;div className=&quot;mt-6 space-y-4&quot;&gt;
+            &lt;div className=&quot;p-4 bg-yellow-50 rounded-lg&quot;&gt;
+              &lt;h3 className=&quot;font-bold text-lg text-yellow-800 mb-2&quot;&gt;Remember:&lt;/h3&gt;
+              &lt;ul className=&quot;space-y-2 text-yellow-700&quot;&gt;
+                &lt;li className=&quot;flex items-center gap-2&quot;&gt;
+                  &lt;AlertTriangle className=&quot;w-4 h-4&quot; /&gt;
+                  &quot;Healthy usage&quot; of platforms designed for addiction is a myth
+                &lt;/li&gt;
+                &lt;li className=&quot;flex items-center gap-2&quot;&gt;
+                  &lt;Brain className=&quot;w-4 h-4&quot; /&gt;
+                  Systems are designed to exploit human psychology
+                &lt;/li&gt;
+                &lt;li className=&quot;flex items-center gap-2&quot;&gt;
+                  &lt;Heart className=&quot;w-4 h-4&quot; /&gt;
+                  Your wellbeing matters more than digital engagement
+                &lt;/li&gt;
+                &lt;li className=&quot;flex items-center gap-2&quot;&gt;
+                  &lt;Users className=&quot;w-4 h-4&quot; /&gt;
+                  Real connections trump digital interactions
+                &lt;/li&gt;
+              &lt;/ul&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div className=&quot;mt-6 text-center text-sm text-gray-600&quot;&gt;
+            This visualization demonstrates how digital platforms continuously work to capture and monetize your attention, regardless of the human cost.
+          &lt;/div&gt;
+        &lt;/CardContent&gt;
+      &lt;/Card&gt;
+    &lt;/div&gt;
+  );
+}</pre>
+</body>
+</html>
